@@ -1,0 +1,11 @@
+{
+  "name": "phone-king-shop-new",
+  "version": "1.0.0",
+  "description": "Phone Shop App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leni",
+  "license": "ISC"
+}
