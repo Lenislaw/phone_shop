@@ -10,6 +10,10 @@ import SearchBar from "./SearchBar";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: "fixed",
+    width:"100vw",
+    zIndex:"3",
+
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -21,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
     display: "flex",
     flexDirection: "row",
+    
   },
   userButtons: {
     display: "flex",
@@ -62,7 +67,6 @@ const Navbar = () => {
               />
               <UserButton
                 anchor={"right"}
-                sideMenuType={"cart"}
                 icon={"cart"}
                 items={["cart item"]}
               />

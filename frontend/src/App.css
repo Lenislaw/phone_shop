@@ -1,8 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  --swiper-theme-color: #19888d;
 }
 .p-0 {
   padding: 0px 0px !important;
+}
+.App {
+  height: 200vh;
+  font-family: "Roboto", sans-serif;
+}
+a:hover {
+  text-decoration: none;
 }
