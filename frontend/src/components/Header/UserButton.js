@@ -12,6 +12,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { AccountCircle, ShoppingCart, PhoneAndroid } from "@material-ui/icons";
+import { deepOrange } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   list: {
@@ -23,11 +24,14 @@ const useStyles = makeStyles({
   menuButton: {
     margin: "0 0.1rem",
   },
+  badge: {
+    backgroundColor: deepOrange[500],
+  },
 });
 
 const UserButton = ({ anchor, icon, items }) => {
   const classes = useStyles();
-  
+
   const [state, setState] = useState({
     left: false,
     right: false,
@@ -124,7 +128,7 @@ const UserButton = ({ anchor, icon, items }) => {
           onClick={toggleDrawer(anchor, true)}
         >
           {icon === "cart" && (
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={1} color="error">
               <ShoppingCart />
             </Badge>
           )}

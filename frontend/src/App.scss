@@ -50,3 +50,11 @@ a:hover {
     }
   }
 }
+
+.social {
+  transition: all 0.2s ease-in;
+  &:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease-in;
+  }
+}
