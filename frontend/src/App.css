@@ -1,18 +1,62 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
-
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   --swiper-theme-color: #19888d;
 }
+
 .p-0 {
   padding: 0px 0px !important;
 }
+
 .App {
-  height: 200vh;
   font-family: "Roboto", sans-serif;
+  padding-top: 150px;
+  min-height: 100vh;
 }
+
 a:hover {
   text-decoration: none;
 }
+
+.swiper-container-products {
+  padding: 1rem;
+  margin: 2rem;
+}
+
+.swiper-container-products .swiper-wrapper {
+  padding: 2rem;
+}
+
+.swiper-container-products .swiper-wrapper .swiper-slide {
+  margin: auto;
+}
+
+.swiper-container-products .swiper-wrapper .swiper-slide .product {
+  border-radius: 5px;
+  width: 250px;
+  padding: 1rem;
+}
+
+.swiper-container-products .swiper-wrapper .swiper-slide .product-image {
+  display: block;
+  margin: 1rem auto;
+  width: 120px;
+}
+
+.swiper-container-products .swiper-wrapper .swiper-slide .product-name {
+  text-align: center;
+  padding: 2rem;
+}
+
+.swiper-container-products .swiper-wrapper .swiper-slide .product-price {
+  text-align: center;
+}
+
+.swiper-container-products .swiper-wrapper .swiper-slide .product:hover {
+  -webkit-box-shadow: 0px 0px 47px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 47px -8px rgba(0, 0, 0, 0.75);
+}
+/*# sourceMappingURL=App.css.map */

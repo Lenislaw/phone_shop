@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
 
 const UserButton = ({ anchor, icon, items }) => {
   const classes = useStyles();
+  
   const [state, setState] = useState({
     left: false,
     right: false,
@@ -121,7 +123,11 @@ const UserButton = ({ anchor, icon, items }) => {
           aria-label="open drawer"
           onClick={toggleDrawer(anchor, true)}
         >
-          {icon === "cart" && <ShoppingCart />}
+          {icon === "cart" && (
+            <Badge badgeContent={4} color="primary">
+              <ShoppingCart />
+            </Badge>
+          )}
           {icon === "profile" && <AccountCircle />}
           {icon === "products" && <PhoneAndroid />}
         </IconButton>
