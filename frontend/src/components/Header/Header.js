@@ -11,9 +11,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     position: "fixed",
-    width:"100vw",
-    zIndex:"3",
-
+    width: "100vw",
+    zIndex: "3",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -25,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
     display: "flex",
     flexDirection: "row",
-    
   },
   userButtons: {
     display: "flex",
@@ -58,7 +56,7 @@ const Navbar = () => {
               <UserButton
                 anchor={"left"}
                 icon={"products"}
-                items={["brand1", "brand2", "brand3"]}
+                items={["sony", "apple", "huawei", "samsung"]}
               />
               <UserButton
                 anchor={"left"}
