@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import {
+  IconButton,
+  Badge,
+  List,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  SwipeableDrawer,
+} from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import { AccountCircle, ShoppingCart, PhoneAndroid } from "@material-ui/icons";
+import {
+  AccountCircle,
+  ShoppingCart,
+  PhoneAndroid,
+  Details,
+} from "@material-ui/icons";
 import { deepOrange } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
@@ -60,23 +68,33 @@ const UserButton = ({ anchor, icon, items }) => {
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
-            {items.map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            {icon === "products" && (
+              <>
+                <ListItem button>
+                  <ListItemIcon>
+                    <Link to="/products">
+                      <MailIcon />
+                    </Link>
+                  </ListItemIcon>
+                  <Link to="/products">
+                    <ListItemText primary="Our Offer" />
+                  </Link>
+                </ListItem>
+              </>
+            )}
           </List>
           <Divider />
           <List>
             {items.map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <Link to={`/products/${text}`}>
+                    <Details />
+                  </Link>
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <Link to={`/products/${text}`}>
+                  <ListItemText primary={text} />
+                </Link>
               </ListItem>
             ))}
           </List>
