@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SwiperCore, { Navigation, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AddToCartButton from "../AddToCartButton";
+import Product from "../Product";
 
 // Import Swiper styles
 import "swiper/swiper.scss";

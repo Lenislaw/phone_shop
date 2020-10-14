@@ -73,11 +73,11 @@ const UserButton = ({ anchor, icon, items }) => {
                 <ListItem button>
                   <ListItemIcon>
                     <Link to="/products">
-                      <MailIcon />
+                      <i className="fas fa-mobile-alt fa-4x"></i>
                     </Link>
                   </ListItemIcon>
                   <Link to="/products">
-                    <ListItemText primary="Our Offer" />
+                    <ListItemText primary="Our Products" />
                   </Link>
                 </ListItem>
               </>
