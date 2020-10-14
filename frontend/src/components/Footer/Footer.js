@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     listStyle: "none",
     justifyContent: "space-around",
+    maxWidth: "300px",
+    margin: "0 auto",
   },
   listSocialItem: {
     color: "white",
