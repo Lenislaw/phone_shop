@@ -21,6 +21,12 @@ h1 {
 a:hover {
   text-decoration: none;
 }
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
 
 .swiper-container-products {
   padding: 1rem;
