@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import { listProducts } from "../actions/productActions";
 import Product from "../components/Product";
 import Paginate from "../components/Paginate";
+import Spinner from "../components/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,10 +21,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Products = ({ match }) => {
+const Products = ({ match, history }) => {
   const classes = useStyles();
   const [spacing, setSpacing] = useState(1);
+
   const keyword = match.params.keyword;
+  const brand = match.params.brand;
 
   const pageNumber = match.params.pageNumber || 1;
 
@@ -32,13 +35,17 @@ const Products = ({ match }) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
 
+  if (pageNumber > pages) {
+    history.push("/");
+  }
+
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber));
-  }, [dispatch, keyword, pageNumber]);
+    dispatch(listProducts(keyword, pageNumber, brand));
+  }, [dispatch, keyword, pageNumber, brand]);
   return (
     <>
       {loading ? (
-        <h1>loading...</h1>
+        <Spinner />
       ) : error ? (
         <h1>{error}</h1>
       ) : (
@@ -56,6 +63,7 @@ const Products = ({ match }) => {
             pages={pages}
             page={page}
             keyword={keyword ? keyword : ""}
+            brand={brand}
           />
         </>
       )}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
@@ -56,7 +57,7 @@ const Navbar = () => {
               <UserButton
                 anchor={"left"}
                 icon={"products"}
-                items={["sony", "apple", "huawei", "samsung"]}
+                items={["Apple", "Huawei", "Samsung", "Xiaomi"]}
               />
               <UserButton
                 anchor={"left"}
@@ -69,7 +70,7 @@ const Navbar = () => {
                 items={["cart item"]}
               />
             </div>
-            <SearchBar />
+            <Route render={({ history }) => <SearchBar history={history} />} />
           </Toolbar>
         </AppBar>
       </div>

@@ -7,6 +7,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ProductsScreen from "./screens/ProductsScreen";
 import ContactScreen from "./screens/ContactScreen";
 import SalesProductsScreen from "./screens/SalesProductsScreen";
+import NotFoundScreen from "./screens/NotFoundScreen";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -19,7 +20,29 @@ const App = () => {
           <Route path="/sales" component={SalesProductsScreen} exact />
           <Route path="/contact" component={ContactScreen} exact />
           <Route path="/products" component={ProductsScreen} exact />
-          <Route path="/page/:pageNumber" component={ProductsScreen} exact />
+          <Route path="/products/:keyword" component={ProductsScreen} exact />
+          <Route path="/search/:keyword" component={ProductsScreen} exact />
+          <Route
+            path="/search/:keyword/page/:pageNumber"
+            component={ProductsScreen}
+            exact
+          />
+          <Route
+            path="/products/brand/:brand"
+            component={ProductsScreen}
+            exact
+          />
+          <Route
+            path="/products/brand/:brand/page/:pageNumber"
+            component={ProductsScreen}
+            exact
+          />
+          <Route
+            path="/products/page/:pageNumber"
+            component={ProductsScreen}
+            exact
+          />
+          <Route path="/notfound" component={NotFoundScreen} exact />
         </main>
       </Container>
       <Footer />

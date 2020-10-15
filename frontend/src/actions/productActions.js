@@ -5,14 +5,16 @@ import {
   PRODUCT_LIST_FAIL,
 } from "../constants/productConstants";
 
-export const listProducts = (keyword = "", pageNumber = "") => async (
-  dispatch
-) => {
+export const listProducts = (
+  keyword = "",
+  pageNumber = "",
+  brand = ""
+) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      `/api/products?keyword=${keyword}&brand=${brand}&pageNumber=${pageNumber}`
     );
 
     dispatch({

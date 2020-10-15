@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Pagination } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
+const Paginate = ({ pages, page, isAdmin = false, keyword = "", brand }) => {
   return (
     pages > 1 && (
       <Pagination className="pagination">
@@ -14,7 +14,9 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
               !isAdmin
                 ? keyword
                   ? `/search/${keyword}/page/${x + 1}`
-                  : `/page/${x + 1}`
+                  : brand
+                  ? `/products/brand/${brand}/page/${x + 1}`
+                  : `/products/page/${x + 1}`
                 : `/admin/productlist/${x + 1}`
             }
           >

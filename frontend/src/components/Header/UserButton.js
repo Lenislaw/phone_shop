@@ -85,15 +85,15 @@ const UserButton = ({ anchor, icon, items }) => {
           </List>
           <Divider />
           <List>
-            {items.map((text, index) => (
-              <ListItem button key={text}>
+            {items.map((brand, index) => (
+              <ListItem button key={brand}>
                 <ListItemIcon>
-                  <Link to={`/products/${text}`}>
+                  <Link to={`/products/brand/${brand}`}>
                     <Details />
                   </Link>
                 </ListItemIcon>
-                <Link to={`/products/${text}`}>
-                  <ListItemText primary={text} />
+                <Link to={`/products/brand/${brand}`}>
+                  <ListItemText primary={brand} />
                 </Link>
               </ListItem>
             ))}

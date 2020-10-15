@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import { Search } from "@material-ui/icons";
@@ -46,22 +46,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBar = () => {
+const SearchBar = ({ history }) => {
   const classes = useStyles();
+  const [keyword, setKeyword] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      history.push(`/search/${keyword}`);
+    } else {
+      history.push("/products");
+    }
+  };
   return (
-    <div className={classes.search}>
+    <form className={classes.search} onSubmit={submitHandler}>
       <div className={classes.searchIcon}>
         <Search />
       </div>
       <InputBase
-        placeholder="Search products…"
+        placeholder="Search Product…"
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
         inputProps={{ "aria-label": "search" }}
+        onChange={(e) => setKeyword(e.target.value)}
       />
-    </div>
+      <button type="submit" variant="outline-success" className="p-2">
+        Search
+      </button>
+    </form>
   );
 };
 

@@ -16,9 +16,17 @@ const getProducts = asyncHandler(async (req, res) => {
         },
       }
     : {};
+  const brand = req.query.brand
+    ? {
+        brand: {
+          $regex: req.query.brand,
+          $options: "i",
+        },
+      }
+    : {};
 
-  const count = await Product.countDocuments({ ...keyword });
-  const products = await Product.find({ ...keyword })
+  const count = await Product.countDocuments({ ...keyword, ...brand });
+  const products = await Product.find({ ...keyword, ...brand })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
