@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
@@ -52,21 +52,31 @@ const Navbar = () => {
       <div className={classes.root}>
         <AppBar position="static" className={classes.appbar}>
           <Toolbar className={classes.toolbar}>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <div className={classes.userButtons}>
               <UserButton
                 anchor={"left"}
-                icon={"products"}
-                items={["Apple", "Huawei", "Samsung", "Xiaomi"]}
+                type={"products"}
+                items={[
+                  { name: "Apple", icon: "" },
+                  { name: "Huawei", icon: "" },
+                  { name: "Samsung", icon: "" },
+                  { name: "Xiaomi", icon: "" },
+                ]}
               />
               <UserButton
                 anchor={"left"}
-                icon={"profile"}
-                items={["name", "email", "alal"]}
+                type={"user"}
+                items={[
+                  { name: "Login", icon: "fas fa-sign-in-alt" },
+                  { name: "Register", icon: "fas fa-user-plus" },
+                ]}
               />
               <UserButton
                 anchor={"right"}
-                icon={"cart"}
+                type={"cart"}
                 items={["cart item"]}
               />
             </div>

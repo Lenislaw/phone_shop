@@ -35,9 +35,10 @@ const useStyles = makeStyles({
   badge: {
     backgroundColor: deepOrange[500],
   },
+  title: { textAlign: "center" },
 });
 
-const UserButton = ({ anchor, icon, items }) => {
+const UserButton = ({ anchor, type, items }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({
@@ -68,7 +69,7 @@ const UserButton = ({ anchor, icon, items }) => {
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
-            {icon === "products" && (
+            {type === "products" && (
               <>
                 <ListItem button>
                   <ListItemIcon>
@@ -82,19 +83,35 @@ const UserButton = ({ anchor, icon, items }) => {
                 </ListItem>
               </>
             )}
+            {type === "user" && (
+              <h5 className={classes.title}>Login / Register</h5>
+            )}
           </List>
           <Divider />
           <List>
-            {items.map((brand, index) => (
-              <ListItem button key={brand}>
+            {items.map((button, index) => (
+              <ListItem button key={button.name}>
                 <ListItemIcon>
-                  <Link to={`/products/brand/${brand}`}>
-                    <Details />
-                  </Link>
+                  {type === "products" && (
+                    <Link to={`/products/brand/${button.name}`}>
+                      <Details />
+                    </Link>
+                  )}
+                  {type === "user" && (
+                    <Link to={`/user/${button.name}`}>
+                      <i className={`${button.icon}`}></i>
+                    </Link>
+                  )}
                 </ListItemIcon>
-                <Link to={`/products/brand/${brand}`}>
-                  <ListItemText primary={brand} />
-                </Link>
+                {type === "products" && (
+                  <Link to={`/products/brand/${button.name}`}>
+                    <ListItemText primary={button.name} />
+                  </Link>
+                )}
+
+                {type === "user" && (
+                  <Link to={`/user/${button.name}`}>{button.name}</Link>
+                )}
               </ListItem>
             ))}
           </List>
@@ -145,13 +162,13 @@ const UserButton = ({ anchor, icon, items }) => {
           aria-label="open drawer"
           onClick={toggleDrawer(anchor, true)}
         >
-          {icon === "cart" && (
+          {type === "cart" && (
             <Badge badgeContent={1} color="error">
               <ShoppingCart />
             </Badge>
           )}
-          {icon === "profile" && <AccountCircle />}
-          {icon === "products" && <PhoneAndroid />}
+          {type === "user" && <AccountCircle />}
+          {type === "products" && <PhoneAndroid />}
         </IconButton>
 
         <SwipeableDrawer

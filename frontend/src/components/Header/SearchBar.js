@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputBase from "@material-ui/core/InputBase";
+import { InputBase } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import { Search } from "@material-ui/icons";
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    marginLeft: 0,
+
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
@@ -71,8 +71,8 @@ const SearchBar = ({ history }) => {
         }}
         inputProps={{ "aria-label": "search" }}
         onChange={(e) => setKeyword(e.target.value)}
-      />
-      <button type="submit" variant="outline-success" className="p-2">
+      ></InputBase>
+      <button className="search-btn" type="submit">
         Search
       </button>
     </form>
