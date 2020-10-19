@@ -13,8 +13,10 @@ const product = ({ product }) => {
         />
         <h4 className="product-name">{product.name}</h4>
       </Link>
-      <h3 className="product-price">{product.price} $</h3>
-      <AddToCartButton />
+      <div className="product-cart">
+        <h3 className="product-price">{product.price} $</h3>
+        <AddToCartButton />
+      </div>
     </div>
   );
 };

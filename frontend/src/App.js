@@ -5,9 +5,12 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import HomeScreen from "./screens/HomeScreen";
 import ProductsScreen from "./screens/ProductsScreen";
+import ProductDetailsScreen from "./screens/ProductDetailsScreen";
 import ContactScreen from "./screens/ContactScreen";
 import SalesProductsScreen from "./screens/SalesProductsScreen";
 import NotFoundScreen from "./screens/NotFoundScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -42,6 +45,9 @@ const App = () => {
             component={ProductsScreen}
             exact
           />
+          <Route path="/product/:id" component={ProductDetailsScreen} exact />
+          <Route path="/user/Login" component={LoginScreen} exact />
+          <Route path="/user/Register" component={RegisterScreen} exact />
           <Route path="/notfound" component={NotFoundScreen} exact />
         </main>
       </Container>

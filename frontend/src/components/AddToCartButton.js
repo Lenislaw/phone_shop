@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: "1rem auto",
     display: "block",
+    width:"180px"
   },
 }));
 
