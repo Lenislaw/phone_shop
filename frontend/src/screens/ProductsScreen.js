@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Products = ({ match, history }) => {
   const classes = useStyles();
-  const [spacing, setSpacing] = useState(1);
 
   const keyword = match.params.keyword;
   const brand = match.params.brand;
