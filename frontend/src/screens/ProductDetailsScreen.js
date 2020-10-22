@@ -2,15 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/Spinner";
-import AddToCartButton from "../components/AddToCartButton";
 import RatingRead from "../components/RatingRead";
 import AlertMessage from "../components/AlertMessage";
-
 import { makeStyles } from "@material-ui/core/styles";
-
 import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
+import AddToCart from "../components/AddToCart";
 
 import { listProductDetails } from "../actions/productActions";
 
@@ -98,33 +94,8 @@ const ProductDetailsScreen = ({ match, history }) => {
                   <h4 className="red">Out Of Stock</h4>
                 )}
               </div>
-              <div className="add-to-cart">
-                <div className="qty">
-                  <div className="buttons">
-                    <Button
-                      className="buttons-btn"
-                      aria-label="reduce"
-                      onClick={() => {
-                        setCount(Math.max(count - 1, 0));
-                      }}
-                    >
-                      <RemoveIcon fontSize="small" />
-                    </Button>
-                    <div className="qty-window">{count}</div>
-                    <Button
-                      className="buttons-btn"
-                      aria-label="increase"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <AddIcon fontSize="small" />
-                    </Button>
-                  </div>
-                </div>
 
-                <AddToCartButton product={product} />
-              </div>
+              <AddToCart error={error} product={product} />
             </div>
           </div>
         </div>
