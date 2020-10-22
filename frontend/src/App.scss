@@ -168,7 +168,8 @@ a:hover {
     }
   }
 }
-.register {
+.register,
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -195,6 +196,8 @@ a:hover {
       .form {
         display: flex;
         flex-direction: column;
+        width: 400px;
+        max-width: 400px;
 
         &-group {
           position: relative;
@@ -253,10 +256,10 @@ a:hover {
           position: absolute;
           bottom: 0;
           right: 0;
-          border:1px solid white;
-          outline:none;
-          padding:0.5rem;
-          color:white;
+          border: 1px solid white;
+          outline: none;
+          padding: 0.5rem;
+          color: white;
           background-color: #43464b;
         }
         .btn-submit {
@@ -276,12 +279,70 @@ a:hover {
     }
   }
 }
+.cart-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
 
 .social {
   transition: all 0.2s ease-in;
   &:hover {
     transform: scale(1.2);
     transition: all 0.3s ease-in;
+  }
+}
+.right-list {
+  width: 33vw;
+  height: auto;
+}
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .heading {
+    flex: 1;
+    text-align: center;
+  }
+}
+.cart {
+  .headings {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+    .head {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  .cart-item {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+    border-bottom: 1px solid gray;
+
+    .details {
+      display: flex;
+      flex-direction: row;
+
+      width: 100%;
+      align-items: center;
+      .detail {
+        flex: 1;
+        text-align: center;
+        .photo {
+          margin: 1rem auto;
+          width: 50px;
+          &-image {
+            max-width: 100%;
+          }
+        }
+        .icon {
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 @media (max-width: 500px) {
@@ -291,5 +352,8 @@ a:hover {
         flex-direction: column;
       }
     }
+  }
+  .right-list {
+    width: 300px;
   }
 }
