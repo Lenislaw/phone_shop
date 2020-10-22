@@ -5,13 +5,20 @@ import {
   productListReducer,
   productDetailsReducer,
 } from "./reducers/productReducers";
-import { userRegisterReducer } from "./reducers/userReducers";
-//import { cartReducer } from "./reducers/cartReducers";
+import {
+  userRegisterReducer,
+  userLoginReducer,
+  userDetailsReducer,
+} from "./reducers/userReducers";
+import { cartReducer } from "./reducers/cartReducers";
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   userRegister: userRegisterReducer,
+  userLogin: userLoginReducer,
+  userDetails: userDetailsReducer,
+  cart: cartReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
