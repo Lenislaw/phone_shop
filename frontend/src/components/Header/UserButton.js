@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   IconButton,
-  Badge,
   List,
   Divider,
   ListItem,
@@ -12,19 +11,17 @@ import {
   ListItemText,
   SwipeableDrawer,
 } from "@material-ui/core";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import {
-  AccountCircle,
-  ShoppingCart,
-  PhoneAndroid,
-  Details,
-} from "@material-ui/icons";
+import { AccountCircle, PhoneAndroid, Details } from "@material-ui/icons";
 import { deepOrange } from "@material-ui/core/colors";
+import CartItem from "../CartItem";
+import Logout from "../../components/Logout";
 
 const useStyles = makeStyles({
   list: {
     width: 300,
+  },
+  icon: {
+    padding: "1rem",
   },
   fullList: {
     width: "auto",
@@ -38,7 +35,7 @@ const useStyles = makeStyles({
   title: { textAlign: "center" },
 });
 
-const UserButton = ({ anchor, type, items }) => {
+const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({
@@ -83,9 +80,7 @@ const UserButton = ({ anchor, type, items }) => {
                 </ListItem>
               </>
             )}
-            {type === "user" && (
-              <h5 className={classes.title}>Login / Register</h5>
-            )}
+            {type === "user" && <h5 className={classes.title}>{title}</h5>}
           </List>
           <Divider />
           <List>
@@ -97,11 +92,14 @@ const UserButton = ({ anchor, type, items }) => {
                       <Details />
                     </Link>
                   )}
-                  {type === "user" && (
-                    <Link to={`/user/${button.name}`}>
-                      <i className={`${button.icon}`}></i>
-                    </Link>
-                  )}
+                  {type === "user" &&
+                    (button.name === "logout" ? (
+                      <Logout type="icon" />
+                    ) : (
+                      <Link to={`/user/${button.name}`}>
+                        <i className={`${button.icon}`}></i>
+                      </Link>
+                    ))}
                 </ListItemIcon>
                 {type === "products" && (
                   <Link to={`/products/brand/${button.name}`}>
@@ -109,41 +107,12 @@ const UserButton = ({ anchor, type, items }) => {
                   </Link>
                 )}
 
-                {type === "user" && (
-                  <Link to={`/user/${button.name}`}>{button.name}</Link>
-                )}
-              </ListItem>
-            ))}
-          </List>
-        </div>
-      )}
-      {anchor === "right" && (
-        <div
-          className={clsx(classes.list, {
-            [classes.fullList]: anchor === "top" || anchor === "bottom",
-          })}
-          role="presentation"
-          onClick={toggleDrawer(anchor, false)}
-          onKeyDown={toggleDrawer(anchor, false)}
-        >
-          <List>
-            {items.map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {items.map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+                {type === "user" &&
+                  (button.name === "logout" ? (
+                    <Logout type="text" />
+                  ) : (
+                    <Link to={`/user/${button.name}`}>{button.name}</Link>
+                  ))}
               </ListItem>
             ))}
           </List>
@@ -162,11 +131,6 @@ const UserButton = ({ anchor, type, items }) => {
           aria-label="open drawer"
           onClick={toggleDrawer(anchor, true)}
         >
-          {type === "cart" && (
-            <Badge badgeContent={1} color="error">
-              <ShoppingCart />
-            </Badge>
-          )}
           {type === "user" && <AccountCircle />}
           {type === "products" && <PhoneAndroid />}
         </IconButton>

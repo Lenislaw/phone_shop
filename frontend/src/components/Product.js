@@ -15,7 +15,10 @@ const product = ({ product }) => {
       </Link>
       <div className="product-cart">
         <h3 className="product-price">{product.price} $</h3>
-        <AddToCartButton />
+        <AddToCartButton
+          id={product._id}
+          disabled={product.countInStock === 0}
+        />
       </div>
     </div>
   );
