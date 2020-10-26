@@ -169,7 +169,8 @@ a:hover {
   }
 }
 .register,
-.login {
+.login,
+.profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -341,6 +342,22 @@ a:hover {
         .icon {
           cursor: pointer;
         }
+      }
+    }
+  }
+  .checkout {
+    float: right;
+    &-btn {
+      padding: 1rem;
+      width: 100%;
+      border: none;
+      outline: none;
+      color: white;
+      background: $mian-color;
+      text-transform: uppercase;
+      font-weight: bold;
+      &:hover {
+        background-color: lighten($color: $main-color, $amount: 10);
       }
     }
   }

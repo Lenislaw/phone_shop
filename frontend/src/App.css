@@ -257,7 +257,8 @@ a:hover {
 }
 
 .register,
-.login {
+.login,
+.profile {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -281,7 +282,8 @@ a:hover {
 }
 
 .register-item,
-.login-item {
+.login-item,
+.profile-item {
   padding: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -296,13 +298,15 @@ a:hover {
 }
 
 .register-item-heading,
-.login-item-heading {
+.login-item-heading,
+.profile-item-heading {
   color: white;
   padding-top: 2rem;
 }
 
 .register-item-box .form,
-.login-item-box .form {
+.login-item-box .form,
+.profile-item-box .form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -315,14 +319,16 @@ a:hover {
 }
 
 .register-item-box .form-group,
-.login-item-box .form-group {
+.login-item-box .form-group,
+.profile-item-box .form-group {
   position: relative;
   overflow: hidden;
   height: 65px;
 }
 
 .register-item-box .form-group-label,
-.login-item-box .form-group-label {
+.login-item-box .form-group-label,
+.profile-item-box .form-group-label {
   color: white;
   position: absolute;
   top: 0;
@@ -334,7 +340,8 @@ a:hover {
 }
 
 .register-item-box .form-group-label .content,
-.login-item-box .form-group-label .content {
+.login-item-box .form-group-label .content,
+.profile-item-box .form-group-label .content {
   position: absolute;
   left: 0;
   bottom: 5px;
@@ -343,7 +350,8 @@ a:hover {
 }
 
 .register-item-box .form-group-label:after,
-.login-item-box .form-group-label:after {
+.login-item-box .form-group-label:after,
+.profile-item-box .form-group-label:after {
   content: "";
   position: absolute;
   left: 0;
@@ -358,7 +366,8 @@ a:hover {
 }
 
 .register-item-box .form-group-input,
-.login-item-box .form-group-input {
+.login-item-box .form-group-input,
+.profile-item-box .form-group-input {
   width: 100%;
   height: 100%;
   color: white;
@@ -371,7 +380,9 @@ a:hover {
 .register-item-box .form-group-input:focus + .form-group-label .content,
 .register-item-box .form-group-input:valid + .form-group-label .content,
 .login-item-box .form-group-input:focus + .form-group-label .content,
-.login-item-box .form-group-input:valid + .form-group-label .content {
+.login-item-box .form-group-input:valid + .form-group-label .content,
+.profile-item-box .form-group-input:focus + .form-group-label .content,
+.profile-item-box .form-group-input:valid + .form-group-label .content {
   -webkit-transform: translateY(-150%);
           transform: translateY(-150%);
   font-size: 14px;
@@ -381,13 +392,16 @@ a:hover {
 .register-item-box .form-group-input:focus + .form-group-label:after,
 .register-item-box .form-group-input:valid + .form-group-label:after,
 .login-item-box .form-group-input:focus + .form-group-label:after,
-.login-item-box .form-group-input:valid + .form-group-label:after {
+.login-item-box .form-group-input:valid + .form-group-label:after,
+.profile-item-box .form-group-input:focus + .form-group-label:after,
+.profile-item-box .form-group-input:valid + .form-group-label:after {
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
 
 .register-item-box .form .btn-eye,
-.login-item-box .form .btn-eye {
+.login-item-box .form .btn-eye,
+.profile-item-box .form .btn-eye {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -399,7 +413,8 @@ a:hover {
 }
 
 .register-item-box .form .btn-submit,
-.login-item-box .form .btn-submit {
+.login-item-box .form .btn-submit,
+.profile-item-box .form .btn-submit {
   background-color: #19888d;
   color: white;
   border-radius: 5px;
@@ -408,12 +423,14 @@ a:hover {
 }
 
 .register-item-box .form .btn-submit:hover,
-.login-item-box .form .btn-submit:hover {
+.login-item-box .form .btn-submit:hover,
+.profile-item-box .form .btn-submit:hover {
   background-color: #21b2b8;
 }
 
 .register-item-box .switch,
-.login-item-box .switch {
+.login-item-box .switch,
+.profile-item-box .switch {
   padding: 1rem;
 }
 
@@ -525,6 +542,25 @@ a:hover {
 
 .cart .cart-item .details .detail .icon {
   cursor: pointer;
+}
+
+.cart .checkout {
+  float: right;
+}
+
+.cart .checkout-btn {
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  background: #19888d;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.cart .checkout-btn:hover {
+  background-color: black;
 }
 
 @media (max-width: 500px) {
