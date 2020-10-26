@@ -57,6 +57,7 @@ const Products = ({ match, history }) => {
               </Grid>
             ))}
           </Grid>
+         
 
           <Paginate
             pages={pages}

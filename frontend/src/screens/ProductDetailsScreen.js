@@ -97,6 +97,7 @@ const ProductDetailsScreen = ({ match, history }) => {
 
               <AddToCart error={error} product={product} />
             </div>
+            
           </div>
         </div>
       )}

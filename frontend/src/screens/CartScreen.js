@@ -2,9 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
 
-const CartScreen = () => {
+const CartScreen = ({ history }) => {
   const userCart = useSelector((state) => state.cart);
   const { cartItems } = userCart;
+
+  const dispatch = useDispatch();
+
+  const checkoutHandler = () => {
+    history.push("/shipping");
+  };
 
   return (
     <div className="cart">
@@ -22,6 +28,28 @@ const CartScreen = () => {
             {cartItems.map((item, index) => (
               <CartItem item={item} key={`cart-${item._id}-item-${index}`} />
             ))}
+          </div>
+          <div className="checkout">
+            <div className="subtotal">
+              <h5>
+                Total amount of items is (
+                {cartItems.reduce((acc, item) => acc + item.qty, 0)}).
+              </h5>
+              <h5>
+                Total to pay:{" "}
+                {cartItems
+                  .reduce((acc, item) => acc + item.qty * item.price, 0)
+                  .toFixed(2)}{" "}
+                ${" "}
+              </h5>
+            </div>
+            <button
+              className="checkout-btn"
+              disabled={cartItems.length === 0}
+              onClick={checkoutHandler}
+            >
+              Proceed To Checkout
+            </button>
           </div>
         </>
       ) : (
