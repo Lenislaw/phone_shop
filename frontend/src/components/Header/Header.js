@@ -77,23 +77,8 @@ const Navbar = () => {
                   { name: "Xiaomi", icon: "" },
                 ]}
               />
-              {userInfo ? (
-                <UserButton
-                  anchor={"left"}
-                  type={"user"}
-                  items={[
-                    { name: "profile", icon: "fas fa-user-alt", link: true },
-                    { name: "orders", icon: "fas fa-box", link: true },
-                    {
-                      name: "logout",
-                      icon: "fas fa-sign-out-alt",
-                      link: false,
-                      usage: onClick,
-                    },
-                  ]}
-                  title="Your Account"
-                />
-              ) : (
+
+              {userInfo === null ? (
                 <UserButton
                   anchor={"left"}
                   type={"user"}
@@ -103,7 +88,47 @@ const Navbar = () => {
                   ]}
                   title="Login/Register"
                 />
+              ) : (
+                userInfo && userInfo.isAdmin ? (
+                  <UserButton
+                    anchor={"left"}
+                    type={"admin"}
+                    items={[
+                      { name: "users", icon: "fas fa-user-alt", link: true },
+                      { name: "products", icon: "fas fa-mobile-alt", link: true },
+                      {
+                        name: "orders",
+                        icon: "fas fa-box",
+                        link: true,
+                      },
+                      {
+                        name: "logout",
+                        icon: "fas fa-sign-out-alt",
+                        link: false,
+                        usage: onClick,
+                      },
+                    ]}
+                    title="Admin Pannel"
+                  />
+                ) : (<UserButton
+                    anchor={"left"}
+                    type={"user"}
+                    items={[
+                      { name: "profile", icon: "fas fa-user-alt", link: true },
+                      { name: "orders", icon: "fas fa-box", link: true },
+                      {
+                        name: "logout",
+                        icon: "fas fa-sign-out-alt",
+                        link: false,
+                        usage: onClick,
+                      },
+                    ]}
+                    title="Your Account"
+                  />)
+             
               )}
+             
+
               <Link className="cart-icon" to="/cart">
                 <Badge badgeContent={countItemsInCart} color="error">
                   <ShoppingCart />

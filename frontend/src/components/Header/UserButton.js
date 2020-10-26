@@ -11,7 +11,12 @@ import {
   ListItemText,
   SwipeableDrawer,
 } from "@material-ui/core";
-import { AccountCircle, PhoneAndroid, Details } from "@material-ui/icons";
+import {
+  AccountCircle,
+  ShoppingCart,
+  PhoneAndroid,
+  Details,
+} from "@material-ui/icons";
 import { deepOrange } from "@material-ui/core/colors";
 import CartItem from "../CartItem";
 import Logout from "../../components/Logout";
@@ -115,6 +120,42 @@ const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
                   ))}
               </ListItem>
             ))}
+            {/*  */}
+            {type === "admin" && <h5 className={classes.title}>{title}</h5>}
+          </List>
+          <Divider />
+          <List>
+            {items.map((button, index) => (
+              <ListItem button key={button.name}>
+                <ListItemIcon>
+                  {type === "products" && (
+                    <Link to={`/products/brand/${button.name}`}>
+                      <Details />
+                    </Link>
+                  )}
+                  {type === "admin" &&
+                    (button.name === "logout" ? (
+                      <Logout type="icon" />
+                    ) : (
+                      <Link to={`/admin/${button.name}`}>
+                        <i className={`${button.icon}`}></i>
+                      </Link>
+                    ))}
+                </ListItemIcon>
+                {type === "products" && (
+                  <Link to={`/products/brand/${button.name}`}>
+                    <ListItemText primary={button.name} />
+                  </Link>
+                )}
+
+                {type === "admin" &&
+                  (button.name === "logout" ? (
+                    <Logout type="text" />
+                  ) : (
+                    <Link to={`/admin/${button.name}`}>{button.name}</Link>
+                  ))}
+              </ListItem>
+            ))}
           </List>
         </div>
       )}
@@ -131,6 +172,8 @@ const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
           aria-label="open drawer"
           onClick={toggleDrawer(anchor, true)}
         >
+         
+          {type === "admin" && <AccountCircle />}
           {type === "user" && <AccountCircle />}
           {type === "products" && <PhoneAndroid />}
         </IconButton>
