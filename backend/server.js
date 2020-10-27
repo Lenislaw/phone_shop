@@ -10,6 +10,7 @@ const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const paypalRoutes = require("./routes/paypalRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/config/paypal", paypalRoutes);
+app.use("/api/upload", uploadRoutes);
 
 const dirname = path.resolve();
 app.use("/uploads", express.static(path.join(dirname, "/uploads")));

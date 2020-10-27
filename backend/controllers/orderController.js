@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Order = require("../models/orderModel.js");
+const Product = require("../models/productModel.js");
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -54,7 +55,7 @@ const getOrderById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update order to paid
+// @desc    Update order to paid and update count in stock
 // @route   GET /api/orders/:id/pay
 // @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
@@ -69,6 +70,16 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       update_time: req.body.update_time,
       email_address: req.body.payer.email_address,
     };
+
+    order.orderItems.forEach((item) => {
+      updateProduct(item.product, item.qty);
+    });
+    async function updateProduct(id, qty) {
+      const product = await Product.findById(id);
+
+      product.countInStock -= qty;
+      await product.save();
+    }
 
     const updatedOrder = await order.save();
 
