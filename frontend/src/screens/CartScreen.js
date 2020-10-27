@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const CartScreen = ({ history }) => {
   const userCart = useSelector((state) => state.cart);
@@ -53,7 +55,14 @@ const CartScreen = ({ history }) => {
           </div>
         </>
       ) : (
-        <h1>Your cart is empty!</h1>
+        <>
+          <h1>Your cart is empty!</h1>
+          <Link to="/products">
+            <Button block className="justify-content-md-center" style={{ background: "#19888d"}}>
+              Check our Products
+            </Button>
+          </Link>
+        </>
       )}
     </div>
   );

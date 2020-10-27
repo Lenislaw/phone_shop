@@ -6,6 +6,7 @@ import { listProducts } from "../actions/productActions";
 import Product from "../components/Product";
 import Paginate from "../components/Paginate";
 import Spinner from "../components/Spinner";
+import { PRODUCT_DETAILS_RESET } from "../constants/productConstants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,6 +40,7 @@ const Products = ({ match, history }) => {
   }
 
   useEffect(() => {
+    dispatch({ type: PRODUCT_DETAILS_RESET });
     dispatch(listProducts(keyword, pageNumber, brand));
   }, [dispatch, keyword, pageNumber, brand]);
   return (
@@ -57,7 +59,6 @@ const Products = ({ match, history }) => {
               </Grid>
             ))}
           </Grid>
-         
 
           <Paginate
             pages={pages}

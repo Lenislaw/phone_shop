@@ -34,22 +34,24 @@ const Icons = () => {
     },
   ];
   return (
-    <Grid container className={classes.root} spacing={2}>
-      {icons.map((icon) => (
-        <Grid
-          key={icon.index}
-          item
-          xs={12}
-          sm={6}
-          md={6}
-          lg={3}
-          className={classes.item}
-        >
-          <i className={icon.icon}></i>
-          <p>{icon.description.toUpperCase()}</p>
-        </Grid>
-      ))}
-    </Grid>
+    <div className="icons">
+      <Grid container className={classes.root} spacing={2}>
+        {icons.map((icon) => (
+          <Grid
+            key={icon.index}
+            item
+            xs={12}
+            sm={6}
+            md={6}
+            lg={3}
+            className={classes.item}
+          >
+            <i className={icon.icon}></i>
+            <p>{icon.description.toUpperCase()}</p>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
 };
 

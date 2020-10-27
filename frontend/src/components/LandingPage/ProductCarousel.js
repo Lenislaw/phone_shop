@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SwiperCore, { Navigation, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AddToCartButton from "../AddToCartButton";
 import Product from "../Product";
+import { listTopProducts } from "../../actions/productActions";
+import Spinner from "../Spinner";
+import AlertMessage from "../AlertMessage";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
@@ -14,11 +18,25 @@ import "swiper/components/pagination/pagination.scss";
 SwiperCore.use([Autoplay, Navigation]);
 
 const Carousel = () => {
-  return (
+  const dispatch = useDispatch();
+
+  const productTopRated = useSelector((state) => state.productTopRated);
+  const { loading, error, products } = productTopRated;
+
+  useEffect(() => {
+    fetchTopProducts();
+  }, [dispatch]);
+
+  const fetchTopProducts = () => {
+    dispatch(listTopProducts());
+  };
+  return loading ? (
+    <Spinner />
+  ) : error ? (
+    <AlertMessage text={error} type={error} />
+  ) : (
     <>
-      <h1 style={{ textAlign: "center" }}>
-        Best selling phones by user reviews
-      </h1>
+      <h1 style={{ textAlign: "center" }}>Best phones by User's reviews</h1>
       <Swiper
         className="swiper-container-products"
         spaceBetween={3}
@@ -45,118 +63,21 @@ const Carousel = () => {
           },
         }}
       >
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
+        {products.map((product) => (
+          <SwiperSlide key={`product-carusel-${product.id}`}>
+            <div className="product">
+              <Link to={`/product/${product._id}`}>
+                <img className="product-image" src={product.image} alt="img" />
+                <h4 className="product-name">{product.name}</h4>
+              </Link>
+              <h3 className="product-price">{product.price} $</h3>
+              <AddToCartButton
+                id={product._id}
+                disabled={product.countInStock === 0}
               />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
-              />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
-              />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
-              />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
-              />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
-              />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
-              />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="product">
-            <Link to="/product/:id">
-              <img
-                className="product-image"
-                src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-                alt="img"
-              />
-              <h4 className="product-name">Apple iPhone 11 64GB Black</h4>
-            </Link>
-            <h3 className="product-price">$ 12321</h3>
-            <AddToCartButton />
-          </div>
-        </SwiperSlide>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

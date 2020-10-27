@@ -29,7 +29,7 @@ const CartItem = ({ item }) => {
           <div className="photo">
             <img
               className="photo-image"
-              src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
+              src={item.image}
               alt={item.name}
             />
           </div>

@@ -23,6 +23,7 @@ import UsersListScreen from "./screens/UsersListScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
+import ProductNotFoundScreen from "./screens/ProductNotFoundScreen";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -49,6 +50,11 @@ const App = () => {
               exact
             />
             <Route
+              path="/productNotFound"
+              component={ProductNotFoundScreen}
+              exact
+            />
+            <Route
               path="/products/brand/:brand"
               component={ProductsScreen}
               exact
@@ -68,16 +74,24 @@ const App = () => {
             <Route path="/user/register" component={RegisterScreen} exact />
             <Route path="/user/profile" component={UserProfileScreen} exact />
             <Route path="/user/orders" component={UserOrdersScreen} exact />
-             <Route path="/admin/orders" component={OrderListScreen} exact />
-             <Route path="/admin/users" component={UsersListScreen} exact />
-              <Route path="/admin/user/:id/edit" component={UserEditScreen} exact />
-              <Route path="/admin/product/:id/edit" component={ProductEditScreen} exact />
-               <Route path="/admin/products" component={ProductListScreen} exact />
-                   <Route
-            path='/admin/products/:pageNumber'
-            component={ProductListScreen}
-            exact
-          />
+            <Route path="/admin/orders" component={OrderListScreen} exact />
+            <Route path="/admin/users" component={UsersListScreen} exact />
+            <Route
+              path="/admin/user/:id/edit"
+              component={UserEditScreen}
+              exact
+            />
+            <Route
+              path="/admin/product/:id/edit"
+              component={ProductEditScreen}
+              exact
+            />
+            <Route path="/admin/products" component={ProductListScreen} exact />
+            <Route
+              path="/admin/products/:pageNumber"
+              component={ProductListScreen}
+              exact
+            />
             <Route path="*" component={NotFoundScreen} />
           </Switch>
         </main>

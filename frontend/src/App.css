@@ -560,10 +560,14 @@ a:hover {
 }
 
 .cart .checkout-btn:hover {
-  background-color: black;
+  background-color: #21b2b8;
 }
 
 @media (max-width: 500px) {
+  .banner-carusel,
+  .icons {
+    display: none;
+  }
   .product-details .box .buy-panel {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -572,6 +576,27 @@ a:hover {
   }
   .right-list {
     width: 300px;
+  }
+  .register,
+  .login,
+  .profile {
+    padding: 0;
+    max-width: 350px;
+  }
+  .register-item-box .form-group,
+  .login-item-box .form-group,
+  .profile-item-box .form-group {
+    margin: 0 auto;
+  }
+  .register-item-box .form-group-input,
+  .login-item-box .form-group-input,
+  .profile-item-box .form-group-input {
+    width: 240px;
+  }
+  .register-item-box .form .btn-submit,
+  .login-item-box .form .btn-submit,
+  .profile-item-box .form .btn-submit {
+    margin: 1rem auto;
   }
 }
 /*# sourceMappingURL=App.css.map */

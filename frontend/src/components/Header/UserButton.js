@@ -85,8 +85,9 @@ const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
                 </ListItem>
               </>
             )}
-            {type === "user" && <h5 className={classes.title}>{title}</h5>}
           </List>
+          {type === "user" && <h5 className={classes.title}>{title}</h5>}
+          {type === "admin" && <h5 className={classes.title}>{title}</h5>}
           <Divider />
           <List>
             {items.map((button, index) => (
@@ -105,34 +106,6 @@ const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
                         <i className={`${button.icon}`}></i>
                       </Link>
                     ))}
-                </ListItemIcon>
-                {type === "products" && (
-                  <Link to={`/products/brand/${button.name}`}>
-                    <ListItemText primary={button.name} />
-                  </Link>
-                )}
-
-                {type === "user" &&
-                  (button.name === "logout" ? (
-                    <Logout type="text" />
-                  ) : (
-                    <Link to={`/user/${button.name}`}>{button.name}</Link>
-                  ))}
-              </ListItem>
-            ))}
-            {/*  */}
-            {type === "admin" && <h5 className={classes.title}>{title}</h5>}
-          </List>
-          <Divider />
-          <List>
-            {items.map((button, index) => (
-              <ListItem button key={button.name}>
-                <ListItemIcon>
-                  {type === "products" && (
-                    <Link to={`/products/brand/${button.name}`}>
-                      <Details />
-                    </Link>
-                  )}
                   {type === "admin" &&
                     (button.name === "logout" ? (
                       <Logout type="icon" />
@@ -148,6 +121,12 @@ const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
                   </Link>
                 )}
 
+                {type === "user" &&
+                  (button.name === "logout" ? (
+                    <Logout type="text" />
+                  ) : (
+                    <Link to={`/user/${button.name}`}>{button.name}</Link>
+                  ))}
                 {type === "admin" &&
                   (button.name === "logout" ? (
                     <Logout type="text" />
@@ -157,6 +136,7 @@ const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
               </ListItem>
             ))}
           </List>
+          <Divider />
         </div>
       )}
     </>
@@ -172,7 +152,6 @@ const UserButton = ({ anchor, type, items, title, countItemsInCart }) => {
           aria-label="open drawer"
           onClick={toggleDrawer(anchor, true)}
         >
-         
           {type === "admin" && <AccountCircle />}
           {type === "user" && <AccountCircle />}
           {type === "products" && <PhoneAndroid />}

@@ -6,11 +6,7 @@ const product = ({ product }) => {
   return (
     <div className="product">
       <Link to={`/product/${product._id}`}>
-        <img
-          className="product-image"
-          src="/apple-iphone-11-dual-esim-64gb-4gb-ram-black.jpg"
-          alt="img"
-        />
+        <img className="product-image" src={product.image} alt={product.name} />
         <h4 className="product-name">{product.name}</h4>
       </Link>
       <div className="product-cart">

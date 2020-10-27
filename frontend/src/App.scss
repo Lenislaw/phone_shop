@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 
-$mian-color: #19888d;
+$main-color: #19888d;
 * {
   padding: 0;
   margin: 0;
@@ -78,7 +78,7 @@ a:hover {
   .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: $mian-color;
+    background-color: $main-color;
     border: none;
     border-radius: 50%;
   }
@@ -228,7 +228,7 @@ a:hover {
               bottom: -1px;
               height: 100%;
               width: 100%;
-              border-bottom: 3px solid $mian-color;
+              border-bottom: 3px solid $main-color;
               transform: translateX(-100%);
               transition: all 0.3s ease;
             }
@@ -245,7 +245,7 @@ a:hover {
             &:valid + .form-group-label .content {
               transform: translateY(-150%);
               font-size: 14px;
-              color: $mian-color;
+              color: $main-color;
             }
             &:focus + .form-group-label:after,
             &:valid + .form-group-label:after {
@@ -264,13 +264,13 @@ a:hover {
           background-color: #43464b;
         }
         .btn-submit {
-          background-color: $mian-color;
+          background-color: $main-color;
           color: white;
           border-radius: 5px;
           display: block;
           margin-bottom: 2rem;
           &:hover {
-            background-color: lighten($mian-color, 10);
+            background-color: lighten($main-color, 10);
           }
         }
       }
@@ -353,7 +353,7 @@ a:hover {
       border: none;
       outline: none;
       color: white;
-      background: $mian-color;
+      background: $main-color;
       text-transform: uppercase;
       font-weight: bold;
       &:hover {
@@ -362,7 +362,12 @@ a:hover {
     }
   }
 }
+
 @media (max-width: 500px) {
+  .banner-carusel,
+  .icons {
+    display: none;
+  }
   .product-details {
     .box {
       .buy-panel {
@@ -372,5 +377,25 @@ a:hover {
   }
   .right-list {
     width: 300px;
+  }
+  .register,
+  .login,
+  .profile {
+    padding: 0;
+    max-width: 350px;
+
+    &-item-box {
+      .form {
+        &-group {
+          margin: 0 auto;
+          &-input {
+            width: 240px;
+          }
+        }
+        .btn-submit {
+          margin: 1rem auto;
+        }
+      }
+    }
   }
 }

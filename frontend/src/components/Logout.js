@@ -1,15 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 
-const Logout = ({ type }) => {
+const Logout = ({ type, history }) => {
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
 
   const logoutHandler = () => {
     dispatch(logout());
-    console.log("out");
   };
 
   return (

@@ -49,7 +49,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className={classes.footer}>
-      <Container maxWidth="lg">
+      {/* <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12} lg={4} className={classes.item}>
             <h3>About Us</h3>
@@ -120,7 +120,7 @@ const Footer = () => {
             </ul>
           </Grid>
         </Grid>
-      </Container>
+      </Container> */}
       <div className={classes.description}>
         <p>
           Site created by{" "}

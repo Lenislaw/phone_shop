@@ -113,7 +113,7 @@ const RegisterScreen = ({ location, history }) => {
         </div>
         <div className="register-item">
           <div className="register-item-box">
-            {error && <AlertMessage variant="danger">{error}</AlertMessage>}
+            {error && <AlertMessage type={error}>{error}</AlertMessage>}
             {loading && <Spinner />}
             <form className="form" onSubmit={submitHandler}>
               <div className="form-group">

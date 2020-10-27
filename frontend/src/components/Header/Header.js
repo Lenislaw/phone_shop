@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, Route } from "react-router-dom";
 import { AppBar, Badge, Toolbar } from "@material-ui/core";
@@ -45,7 +45,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo } = userLogin;
 
   const userCart = useSelector((state) => state.cart);
   const { cartItems } = userCart;
@@ -53,7 +53,10 @@ const Navbar = () => {
   const countItemsInCart = cartItems.length;
   console.log(typeof countItemsInCart);
   // rest nav
-
+  useEffect(() => {
+    console.log("Zmiana user Info");
+    console.log(userInfo);
+  }, [userInfo]);
   const onClick = () => {
     console.log("Click");
   };
@@ -78,7 +81,7 @@ const Navbar = () => {
                 ]}
               />
 
-              {userInfo === null ? (
+              {userInfo === null || userInfo === undefined ? (
                 <UserButton
                   anchor={"left"}
                   type={"user"}
@@ -88,46 +91,44 @@ const Navbar = () => {
                   ]}
                   title="Login/Register"
                 />
+              ) : userInfo && userInfo.isAdmin ? (
+                <UserButton
+                  anchor={"left"}
+                  type={"admin"}
+                  items={[
+                    { name: "users", icon: "fas fa-user-alt", link: true },
+                    { name: "products", icon: "fas fa-mobile-alt", link: true },
+                    {
+                      name: "orders",
+                      icon: "fas fa-box",
+                      link: true,
+                    },
+                    {
+                      name: "logout",
+                      icon: "fas fa-sign-out-alt",
+                      link: false,
+                      usage: onClick,
+                    },
+                  ]}
+                  title="Admin Pannel"
+                />
               ) : (
-                userInfo && userInfo.isAdmin ? (
-                  <UserButton
-                    anchor={"left"}
-                    type={"admin"}
-                    items={[
-                      { name: "users", icon: "fas fa-user-alt", link: true },
-                      { name: "products", icon: "fas fa-mobile-alt", link: true },
-                      {
-                        name: "orders",
-                        icon: "fas fa-box",
-                        link: true,
-                      },
-                      {
-                        name: "logout",
-                        icon: "fas fa-sign-out-alt",
-                        link: false,
-                        usage: onClick,
-                      },
-                    ]}
-                    title="Admin Pannel"
-                  />
-                ) : (<UserButton
-                    anchor={"left"}
-                    type={"user"}
-                    items={[
-                      { name: "profile", icon: "fas fa-user-alt", link: true },
-                      { name: "orders", icon: "fas fa-box", link: true },
-                      {
-                        name: "logout",
-                        icon: "fas fa-sign-out-alt",
-                        link: false,
-                        usage: onClick,
-                      },
-                    ]}
-                    title="Your Account"
-                  />)
-             
+                <UserButton
+                  anchor={"left"}
+                  type={"user"}
+                  items={[
+                    { name: "profile", icon: "fas fa-user-alt", link: true },
+                    { name: "orders", icon: "fas fa-box", link: true },
+                    {
+                      name: "logout",
+                      icon: "fas fa-sign-out-alt",
+                      link: false,
+                      usage: onClick,
+                    },
+                  ]}
+                  title="Your Account"
+                />
               )}
-             
 
               <Link className="cart-icon" to="/cart">
                 <Badge badgeContent={countItemsInCart} color="error">

@@ -55,13 +55,15 @@ const SearchBar = ({ history }) => {
     if (keyword.trim()) {
       history.push(`/search/${keyword}`);
     } else {
-      history.push("/products");
+      history.push("/productNotFound");
     }
   };
   return (
     <form className={classes.search} onSubmit={submitHandler}>
       <div className={classes.searchIcon}>
-        <Search />
+        <Search>
+          <button className="search-btn" type="submit"></button>
+        </Search>
       </div>
       <InputBase
         placeholder="Search Product…"
@@ -72,9 +74,6 @@ const SearchBar = ({ history }) => {
         inputProps={{ "aria-label": "search" }}
         onChange={(e) => setKeyword(e.target.value)}
       ></InputBase>
-      <button className="search-btn" type="submit">
-        Search
-      </button>
     </form>
   );
 };
