@@ -100,7 +100,6 @@ const Navbar = () => {
                       name: "logout",
                       icon: "fas fa-sign-out-alt",
                       link: false,
-                      usage: onClick,
                     },
                   ]}
                   title="Admin Pannel"
@@ -116,7 +115,6 @@ const Navbar = () => {
                       name: "logout",
                       icon: "fas fa-sign-out-alt",
                       link: false,
-                      usage: onClick,
                     },
                   ]}
                   title="Your Account"
