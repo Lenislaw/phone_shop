@@ -34,6 +34,18 @@ $ npm install
 In root folder add your environment variables in .env (MongoDB link and PayPalClientId)
 Run app in development mode from root folder
 
+When yout MongoDB connected you can import example products from backend/data/producs.js and example users from backend/data/users.js 
+
+$ npm run data:import
+
+or
+
+To delete all data
+
+$ npm run data:destroy
+
+Run app in development mode
+
 $ npm run dev
 
 ### Futures
