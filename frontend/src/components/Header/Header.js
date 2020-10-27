@@ -51,15 +51,8 @@ const Navbar = () => {
   const { cartItems } = userCart;
 
   const countItemsInCart = cartItems.length;
-  console.log(typeof countItemsInCart);
-  // rest nav
-  useEffect(() => {
-    console.log("Zmiana user Info");
-    console.log(userInfo);
-  }, [userInfo]);
-  const onClick = () => {
-    console.log("Click");
-  };
+
+  useEffect(() => {}, [userInfo]);
 
   return (
     <header>

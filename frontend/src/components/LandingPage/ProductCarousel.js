@@ -63,8 +63,8 @@ const Carousel = () => {
           },
         }}
       >
-        {products.map((product) => (
-          <SwiperSlide key={`product-carusel-${product.id}`}>
+        {products.map((product, index) => (
+          <SwiperSlide key={`product-carusel-${product.id}-${index}`}>
             <div className="product">
               <Link to={`/product/${product._id}`}>
                 <img className="product-image" src={product.image} alt="img" />

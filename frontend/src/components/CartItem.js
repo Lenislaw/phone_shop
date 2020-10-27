@@ -9,7 +9,7 @@ const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const [count, setCount] = useState(item.qty);
-  console.log("item", count);
+
   count > item.countInStock && setCount(item.countInStock);
 
   useEffect(() => {
@@ -27,11 +27,7 @@ const CartItem = ({ item }) => {
       <div className="details">
         <div className="detail">
           <div className="photo">
-            <img
-              className="photo-image"
-              src={item.image}
-              alt={item.name}
-            />
+            <img className="photo-image" src={item.image} alt={item.name} />
           </div>
           <p>{item.name}</p>
         </div>

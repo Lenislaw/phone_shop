@@ -8,10 +8,17 @@ const CartScreen = ({ history }) => {
   const userCart = useSelector((state) => state.cart);
   const { cartItems } = userCart;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const dispatch = useDispatch();
 
   const checkoutHandler = () => {
-    history.push("/shipping");
+    if (userInfo) {
+      history.push("/shipping");
+    } else {
+      history.push("/user/login");
+    }
   };
 
   return (
@@ -58,7 +65,11 @@ const CartScreen = ({ history }) => {
         <>
           <h1>Your cart is empty!</h1>
           <Link to="/products">
-            <Button block className="justify-content-md-center" style={{ background: "#19888d"}}>
+            <Button
+              block
+              className="justify-content-md-center"
+              style={{ background: "#19888d" }}
+            >
               Check our Products
             </Button>
           </Link>

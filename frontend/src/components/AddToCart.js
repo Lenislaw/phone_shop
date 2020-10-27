@@ -9,8 +9,6 @@ const AddToCart = ({ error, product, qty = 1 }) => {
   const [count, setCount] = useState(qty);
   !error && count > product.countInStock && setCount(product.countInStock);
 
-  console.log("PRODUcT", product._id);
-
   return (
     <div className="add-to-cart">
       <div className="qty">

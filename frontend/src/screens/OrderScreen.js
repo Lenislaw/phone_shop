@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
+//import PayPal from "../components/PayPal";
 import { Link } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,10 +51,9 @@ const OrderScreen = ({ match, history }) => {
 
   useEffect(() => {
     if (!userInfo) {
-      history.push("/user/login");
+      history.push("/login");
     }
 
-    
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get("/api/config/paypal");
       const script = document.createElement("script");
@@ -80,7 +80,6 @@ const OrderScreen = ({ match, history }) => {
   }, [dispatch, orderId, successPay, successDeliver, order]);
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
     dispatch(clearCart());
     dispatch(orderReset());
@@ -93,10 +92,10 @@ const OrderScreen = ({ match, history }) => {
   return loading ? (
     <Spinner />
   ) : error ? (
-    <AlertMessage type="error" text={error} />
+    <AlertMessage type={error} text={error} />
   ) : (
     <>
-      <h6>Order {order._id}</h6>
+      <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
@@ -117,11 +116,11 @@ const OrderScreen = ({ match, history }) => {
               </p>
               {order.isDelivered ? (
                 <AlertMessage
-                  type={"success"}
-                  text={`Delivered on ${order.deliveredAt}`}
-                ></AlertMessage>
+                  type={`success`}
+                  text={` Delivered on ${order.deliveredAt}`}
+                />
               ) : (
-                <AlertMessage type={"error"} text={"Not Delivered"} />
+                <AlertMessage type={`error`} text={`Not Delivered`} />
               )}
             </ListGroup.Item>
 
@@ -133,18 +132,18 @@ const OrderScreen = ({ match, history }) => {
               </p>
               {order.isPaid ? (
                 <AlertMessage
-                  type={"success"}
-                  text={`Paid on ${order.paidAt}`}
+                  type={`success`}
+                  text={` Paid at ${order.paidAt}`}
                 />
               ) : (
-                <AlertMessage type={"error"} text={`Not payd!`} />
+                <AlertMessage type={`error`} text={`Not Paid`} />
               )}
             </ListGroup.Item>
 
             <ListGroup.Item>
               <h2>Order Items</h2>
               {order.orderItems.length === 0 ? (
-                <AlertMessage type={"warning"} text={"Order is empty!"} />
+                <AlertMessage type={`error`} text={`Order is empty`} />
               ) : (
                 <ListGroup variant="flush">
                   {order.orderItems.map((item, index) => (
